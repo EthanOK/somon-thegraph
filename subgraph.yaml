@@ -1,0 +1,83 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ERC721CMRoyalties
+    network: base
+    source:
+      address: "0x475Aa716337D79B5EA513BFE4cc01787eb2E6004"
+      abi: ERC721CMRoyalties
+      startBlock: 15597860
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - ConsecutiveTransfer
+        - DefaultRoyaltySet
+        - OwnershipTransferred
+        - SetActiveStage
+        - SetBaseURI
+        - SetCosigner
+        - SetCrossmintAddress
+        - SetGlobalWalletLimit
+        - SetMaxMintableSupply
+        - SetMintCurrency
+        - SetMintable
+        - SetTimestampExpirySeconds
+        - TokenRoyaltySet
+        - Transfer
+        - TransferValidatorUpdated
+        - UpdateStage
+        - Withdraw
+        - WithdrawERC20
+      abis:
+        - name: ERC721CMRoyalties
+          file: ./abis/ERC721CMRoyalties.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: ConsecutiveTransfer(indexed uint256,uint256,indexed address,indexed address)
+          handler: handleConsecutiveTransfer
+        - event: DefaultRoyaltySet(indexed address,uint96)
+          handler: handleDefaultRoyaltySet
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SetActiveStage(uint256)
+          handler: handleSetActiveStage
+        - event: SetBaseURI(string)
+          handler: handleSetBaseURI
+        - event: SetCosigner(address)
+          handler: handleSetCosigner
+        - event: SetCrossmintAddress(address)
+          handler: handleSetCrossmintAddress
+        - event: SetGlobalWalletLimit(uint256)
+          handler: handleSetGlobalWalletLimit
+        - event: SetMaxMintableSupply(uint256)
+          handler: handleSetMaxMintableSupply
+        - event: SetMintCurrency(address)
+          handler: handleSetMintCurrency
+        - event: SetMintable(bool)
+          handler: handleSetMintable
+        - event: SetTimestampExpirySeconds(uint64)
+          handler: handleSetTimestampExpirySeconds
+        - event: TokenRoyaltySet(indexed uint256,indexed address,uint96)
+          handler: handleTokenRoyaltySet
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: TransferValidatorUpdated(address,address)
+          handler: handleTransferValidatorUpdated
+        - event: UpdateStage(uint256,uint80,uint80,uint32,bytes32,uint24,uint64,uint64)
+          handler: handleUpdateStage
+        - event: Withdraw(uint256)
+          handler: handleWithdraw
+        - event: WithdrawERC20(address,uint256)
+          handler: handleWithdrawERC20
+      file: ./src/erc-721-cm-royalties.ts

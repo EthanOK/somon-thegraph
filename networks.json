@@ -1,0 +1,8 @@
+{
+  "base": {
+    "ERC721CMRoyalties": {
+      "address": "0x475Aa716337D79B5EA513BFE4cc01787eb2E6004",
+      "startBlock": 15597860
+    }
+  }
+}
